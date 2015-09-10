@@ -85,7 +85,7 @@ namespace WindowsFormsApplication1
 
             string dir = Path.GetDirectoryName(mp4filepath);
             string fnwoext = Path.GetFileNameWithoutExtension(mp4filepath);
-            string mp3filename = Path.Combine(dir, fnwoext + ".mp3");
+            string mp3filename = "\""+Path.Combine(dir, fnwoext + ".mp3")+"\"";
             string arg = " -y -i \"" + mp4filepath + "\" -vn -ac 2 -ar 44100 -ab 128k " + mp3filename;
              string apppath = Application.ExecutablePath;
             string appdir = Path.GetDirectoryName(apppath);
@@ -99,11 +99,11 @@ namespace WindowsFormsApplication1
 
                 p.StartInfo.FileName = ffmpegpath; // 実行するファイル
                 p.StartInfo.Arguments = arg;
-                p.StartInfo.CreateNoWindow = true; // コンソールを開かない
-                p.StartInfo.UseShellExecute = false; // シェル機能を使用しない
+               // p.StartInfo.CreateNoWindow = true; // コンソールを開かない
+               // p.StartInfo.UseShellExecute = false; // シェル機能を使用しない
 
-                p.StartInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
-                p.StartInfo.RedirectStandardError = true;
+               // p.StartInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
+               // p.StartInfo.RedirectStandardError = true;
 
                 xLog("now processing " + mp4filepath + "...");
                 Application.DoEvents();
